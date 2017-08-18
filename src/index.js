@@ -1,3 +1,5 @@
+import Chart from 'chartjs'
+
 var fb = new Firebase('https://uniroller-fa110.firebaseio.com/');
 var chartRef = fb.child('chart-1');
 var dataRef  = fb.child('chart-data');

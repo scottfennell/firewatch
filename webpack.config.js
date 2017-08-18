@@ -1,8 +1,9 @@
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
     entry: __dirname + '/src/index.js',
     output: {
         path: __dirname + '/dist',
-        publicPath: '/dist/',
+        // publicPath: '/dist/',
         filename: 'bundle.js'
     },
     module: {
@@ -11,12 +12,14 @@ module.exports = {
             exclude: /node_modules/,
             use: 'babel-loader'
         },{
-            test: /\.(html)$/,
-            use: {
-                loader: 'html-loader',
-                options: {
-                attrs: [':data-src']
+            test: /\.(png|jpg|gif)$/,
+            use: [
+            {
+                loader: 'file-loader',
+                options: {}  
             }
+            ]
         }]
-    }
+    },
+    plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })]
 };
